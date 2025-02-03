@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:prochain/presentation/module/home/widget/info_section.dart';
 import 'package:prochain/presentation/module/home/widget/sales_chart_section.dart';
@@ -7,7 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class HomeDashboardPage extends StatelessWidget {
-  const HomeDashboardPage({Key? key}) : super(key: key);
+  const HomeDashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HomeDashboardPage extends StatelessWidget {
 
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: ResponsiveGridRow(
           children: [
             ResponsiveGridCol(

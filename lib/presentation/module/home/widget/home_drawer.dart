@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prochain/core/config/routes.dart';
@@ -7,6 +9,7 @@ import 'package:prochain/presentation/module/home/controller/home_controller.dar
 
 class HomeDrawerWidget extends GetResponsiveView<HomeController> {
   HomeDrawerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,10 +28,12 @@ class HomeDrawerWidget extends GetResponsiveView<HomeController> {
                       color: colorGreyLight,
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: AssetImage(AssetUtil().path(
-                              path: 'icon/icon-profile.png')) as ImageProvider,
-                          filterQuality: FilterQuality.low,
-                          fit: BoxFit.cover),
+                        image: AssetImage(
+                                AssetUtil().path(path: 'icon/icon-profile.png'))
+                            as ImageProvider,
+                        filterQuality: FilterQuality.low,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -65,16 +70,80 @@ class HomeDrawerWidget extends GetResponsiveView<HomeController> {
                   ListTile(
                     dense: true,
                     onTap: () {
-                      controller.currentNavbar.value = 1;
+                      controller.currentNavbar.value = 0;
                       Get.back();
                     },
-                    leading: Icon(Icons.storage_outlined,
-                        color: colorGreyDark, size: 20),
+                    leading:
+                        Icon(Icons.dashboard, color: colorGreyDark, size: 20),
                     title: Text(
-                      'Master Data',
+                      'Dashboard',
                       style: Get.textTheme.bodyMedium,
                     ),
                   ),
+                  Obx(() => ExpansionTile(
+                        initiallyExpanded:
+                            controller.isMasterDataExpanded.value,
+                        onExpansionChanged: (expanded) {
+                          controller.isMasterDataExpanded.value = expanded;
+                        },
+                        leading: Icon(Icons.storage_outlined,
+                            color: colorGreyDark, size: 20),
+                        title: Text(
+                          'Master Data',
+                          style: Get.textTheme.bodyMedium,
+                        ),
+                        tilePadding: EdgeInsets.symmetric(
+                            horizontal: 16), // Menghilangkan padding default
+                        childrenPadding: EdgeInsets.only(
+                            left: 40), // Memberikan padding hanya ke anak-anak
+                        collapsedShape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.zero), // Hilangkan garis atas
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.zero), // Hilangkan garis bawah
+                        children: [
+                          ListTile(
+                            dense: true,
+                            onTap: () {
+                              controller.currentNavbar.value = 1;
+                              Get.back();
+                            },
+                            leading: Icon(Icons.category,
+                                color: colorGreyDark, size: 18),
+                            title: Text(
+                              'Kategori',
+                              style: Get.textTheme.bodySmall,
+                            ),
+                          ),
+                          ListTile(
+                            dense: true,
+                            onTap: () {
+                              // Navigasi ke halaman Items
+                              Get.toNamed(itemRoute); // Pastikan itemRoute ada di routes.dart
+                            },
+                            leading: Icon(Icons.inventory,
+                                color: colorGreyDark, size: 18),
+                            title: Text(
+                              'Items',
+                              style: Get.textTheme.bodySmall,
+                            ),
+                          ),
+                          ListTile(
+                            dense: true,
+                            onTap: () {
+                              controller.currentNavbar.value = 1;
+                              Get.back();
+                            },
+                            leading: Icon(Icons.balance,
+                                color: colorGreyDark, size: 18),
+                            title: Text(
+                              'Satuan / Unit',
+                              style: Get.textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
+                      )),
                   ListTile(
                     dense: true,
                     onTap: () {

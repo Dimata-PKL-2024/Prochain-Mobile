@@ -49,7 +49,7 @@ class MainRouter {
         name: profileRoute,
         page: () => ProfileScreen(),
         binding: ProfileBinding(),
-      ),
+      ), 
     ];
   }
 }

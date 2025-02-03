@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:prochain/core/style/style.dart';
 import 'package:prochain/core/theme/theme.dart';

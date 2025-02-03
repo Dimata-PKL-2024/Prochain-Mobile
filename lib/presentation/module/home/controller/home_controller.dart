@@ -29,6 +29,7 @@ class HomeController extends GetxController {
       GlobalKey<ScaffoldState>();
 
   final RxInt currentNavbar = 0.obs;
+  var isMasterDataExpanded = false.obs;
   var projects = 20.obs;
   var productions = 234.obs;
   var stocks = 43.obs;

@@ -56,7 +56,7 @@ class HomeScreen extends GetResponsiveView<HomeController> {
                 IndexedStack(
                   index: controller.currentNavbar.value,
                   children: [
-                    HomeDashboardPage(),
+                    const HomeDashboardPage(),
                     Container(),
                   ],
                 ),
